@@ -18,20 +18,14 @@
     </header>
     <section id="app">
       <ul>
-        <li>
-          <h2>Melvin Jenkins</h2>
-          <button>Show Details</button>
-          <ul>
-            <li><strong>Phone:</strong> 01234 5678 991</li>
-            <li><strong>Email:</strong> melvin@localhost.com</li>
-          </ul>
-        </li>
-        <li>
-          <h2>Jessica Weber</h2>
-          <button>Show Details</button>
-          <ul>
-            <li><strong>Phone:</strong> 09876 543 221</li>
-            <li><strong>Email:</strong> jessica@localhost.com</li>
+        <li v-for="friend in friends" :key="friend.id">
+          <h2>{{ friend.name }}</h2>
+          <button @click="toggleDetails()">
+            {{ detailsAreVisible ? 'Hide' : 'Show' }} Details
+          </button>
+          <ul v-if="detailsAreVisible">
+            <li><strong>Phone:</strong> {{ friend.phone }}</li>
+            <li><strong>Email:</strong> {{ friend.email }}</li>
           </ul>
         </li>
       </ul>
